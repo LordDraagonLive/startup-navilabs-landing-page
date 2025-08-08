@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NaviLabs — Software Solutions & Consultancy</title>
+  <meta name="description" content="NaviLabs provides dedicated engineering teams and end‑to‑end software solutions across industries. .NET • Azure • Kubernetes • OpenAI • PostgreSQL." />
+  <link rel="icon" href="/favicon.ico" />
+  <style>
+    /* ===== Theme ===== */
+    :root{--bg:#0b0c0f;--fg:#e8eaf0;--muted:#9aa4b2;--brand:#7c5cff;--accent:#22c55e;--card:#11131a;--border:#242736;--ring:rgba(124,92,255,.5);--shadow:0 10px 30px rgba(0,0,0,.35)}
+    :root.light{--bg:#ffffff;--fg:#0b1220;--muted:#475569;--brand:#5b34ff;--accent:#16a34a;--card:#f8fafc;--border:#e2e8f0;--ring:rgba(91,52,255,.25);--shadow:0 10px 30px rgba(2,6,23,.08)}
+
+    /* ===== Reset / Base ===== */
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;line-height:1.6;color:var(--fg);background:radial-gradient(1200px 600px at 80% -10%,rgba(124,92,255,.25),transparent),radial-gradient(900px 500px at -10% 10%,rgba(34,197,94,.18),transparent),var(--bg)}
+    img{max-width:100%;display:block}
+    a{color:inherit}
+    .container{max-width:1120px;margin-inline:auto;padding:0 20px}
+    section{padding:80px 0}
+    .grid{display:grid;gap:24px}
+    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    @media (max-width:900px){.grid-2,.grid-3{grid-template-columns:1fr}}
+
+    /* ===== UI ===== */
+    .nav{position:sticky;top:0;z-index:50;background:rgba(11,12,15,.6);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--border)}
+    :root.light .nav{background:rgba(255,255,255,.9)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px}
+    .brand svg{width:28px;height:28px}
+    .links a{margin-left:18px;text-decoration:none;color:var(--muted);font-weight:600}
+    .links a:hover{color:var(--fg)}
+    :root.light .links a{color:#111827}
+    .actions{display:flex;gap:10px;align-items:center}
+    .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);background:transparent;color:var(--fg);padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:600;transition:transform .1s ease, border-color .2s ease}
+    .btn:hover{border-color:var(--fg);transform:translateY(-1px)}
+    .btn.primary{background:var(--brand);border-color:transparent;color:#fff}
+    .btn.ghost{background:transparent}
+
+    .hero{padding:110px 0 70px}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.02)}
+    h1{font-size:clamp(32px,6vw,56px);line-height:1.08;margin:14px 0 12px}
+    p.lead{font-size:clamp(16px,2.4vw,20px);color:var(--muted);max-width:65ch}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.0));border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+    .feature{display:flex;gap:12px}
+    .feature svg{flex:0 0 28px;margin-top:2px}
+    .muted{color:var(--muted)}
+
+    /* Normalize icon/text alignment across sections */
+    .feature{align-items:flex-start}
+    .feature svg{width:28px;height:28px}
+    .feature>div{flex:1}
+    .feature h3{margin:0 0 6px;line-height:1.25}
+    .feature p{margin:0}
+    .feature ul{margin:8px 0 0;padding-left:18px}
+
+    .pill{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;font-size:12px}
+    .stack{display:flex;flex-wrap:wrap;gap:8px}
+    footer{padding:36px 0;border-top:1px solid var(--border);font-size:14px;color:var(--muted)}
+
+    /* Theme icon visibility */
+    .icon-sun{display:none}
+    :root.light .icon-sun{display:inline}
+    :root.light .icon-moon{display:none}
+    /* Glossy FAQ cards */
+    details{background:rgba(255,255,255,0.05);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:12px 14px}
+    :root.light details{background:rgba(255,255,255,0.7);border:1px solid var(--border)}
+    details+details{margin-top:12px}
+    summary{cursor:pointer;font-weight:600}
+    /*/* ===== Responsive tweaks ===== */
+    /* Hero layout: stack content then features card */
+    .hero .grid{grid-template-columns:1fr;align-items:start}
+    .hero .card{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.0));border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:var(--shadow);max-width:min(860px,92vw);margin:32px auto 0}
+    /* Prevent two‑column layout at large sizes */
+    @media (min-width:1100px){.hero .grid{grid-template-columns:1fr}}
+
+    /* Section spacing & container padding scale */
+    section{padding:clamp(56px,8vw,80px) 0}
+    .container{padding:0 clamp(14px,3vw,20px)}
+
+    /* Nav wrapping for small screens */
+    .nav-inner{flex-wrap:wrap}
+    .links{display:flex;flex-wrap:wrap;align-items:center;justify-content:center}
+    @media (max-width:720px){
+      .links a{margin:6px 10px 0 0;font-size:14px}
+      .actions{margin-top:8px}
+    }
+
+    /* Stack section centering & tighter pills */
+    #stack .card{padding:14px 16px}
+    #stack .stack{justify-content:center}
+    #stack .pill{margin:4px 0}
+
+    /* FAQ width and center; keep glossy style */
+    #faq details{max-width:900px;margin:12px auto}
+    #faq h2{margin-bottom:16px}
+    /* Contact layout balance */
+    #contact .container{max-width:1120px}
+    #contact .grid{align-items:stretch;gap:24px}
+    @media (min-width:901px){#contact .grid{grid-template-columns:1.15fr .85fr}}
+    /* Reduce gap between FAQ → Contact */
+    #faq{padding-bottom:48px}
+    #contact{padding-top:56px}
+    /* Card + form alignment */
+    #contact form.card{display:flex;flex-direction:column;gap:12px}
+    #contact form .row{display:flex;gap:10px}
+    #contact input#email{height:44px;padding:10px 12px;border-radius:10px}
+    #contact button.btn{height:44px;align-self:flex-start}
+    /* Tidy headline rhythm */
+    #contact h2{margin:0 0 8px}
+    #contact p.muted{margin:0 0 14px;max-width:48ch}
+  </style>
+</head>
+<body>
+<!-- NAV -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="#top" aria-label="Go to top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3l8.66 5v8L12 21l-8.66-5V8L12 3z"/><path d="M12 3v18"/></svg>
+      <span>NaviLabs</span>
+    </a>
+    <div class="links">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#stack">Stack</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="actions">
+      <button id="themeToggle" class="btn ghost" aria-label="Toggle theme" title="Toggle theme" style="padding:8px 10px">
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+      <a class="btn primary" href="#contact">Book a call</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container grid grid-2">
+      <div>
+        <span class="eyebrow">Technology solutions for any challenge</span>
+        <h1>Dedicated teams and end‑to‑end builds that move your roadmap forward.</h1>
+        <p class="lead">Sri Lanka–based with global reach. We plan, architect, and ship custom platforms for enterprises, startups, and scale‑ups across industries. We focus on outcomes, reliability, and long‑term support.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#contact">Start a conversation</a>
+          <a class="btn" href="#work">See recent work</a>
+        </div>
+        <div class="stack" style="margin-top:18px">
+          <span class="pill">Enterprise</span>
+          <span class="pill">Fintech</span>
+          <span class="pill">Healthcare</span>
+          <span class="pill">Logistics</span>
+          <span class="pill">Manufacturing</span>
+          <span class="pill">Gov/NGO</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="grid" style="gap:12px">
+          <div class="feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h14M3 18h10"/></svg>
+            <div><strong>Discovery → Architecture → Build → Run</strong><br><span class="muted">A delivery loop that favours clarity, speed, and stability.</span></div>
+          </div>
+          <div class="feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+            <div><strong>Security & compliance first</strong><br><span class="muted">Access controls, audit trails, and encrypted data flows.</span></div>
+          </div>
+          <div class="feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h10M4 17h6"/></svg>
+            <div><strong>Flexible, industry‑agnostic</strong><br><span class="muted">Adaptable processes and stacks for diverse needs.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <h2 style="text-align:center">What we do</h2>
+      <p class="muted" style="text-align:center;max-width:70ch;margin:6px auto 22px">Two core tracks designed to meet you where you are—augment your team or own the build with us end‑to‑end.</p>
+      <div class="grid grid-2">
+        <article class="card">
+          <div class="feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3l8 4-8 4-8-4 8-4z"/><path d="M4 11l8 4 8-4"/><path d="M4 19l8 4 8-4"/></svg>
+            <div>
+              <h3>Dedicated Teams for Businesses</h3>
+              <p class="muted">High‑performing engineers embedded with your product org. Flexible capacity, senior mentorship, and delivery you can trust.</p>
+              <ul>
+                <li>Staff augmentation & team pods</li>
+                <li>Sprint planning & velocity tracking</li>
+                <li>Architecture guidance & code reviews</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+            <div>
+              <h3>End‑to‑End Software Solutions</h3>
+              <p class="muted">From discovery to production. We design, build, and run platforms across enterprise, fintech, and research workloads.</p>
+              <ul>
+                <li>Product discovery & UX flows</li>
+                <li>Secure, scalable architecture</li>
+                <li>Infra‑as‑code, CI/CD, SRE</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES (matches card format) -->
+  <section id="capabilities">
+    <div class="container">
+      <h2 style="text-align:center">How we help</h2>
+      <div class="grid grid-3" style="margin-top:18px">
+        <article class="card feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M12 3v18"/></svg>
+          <div>
+            <h3>Strategic consultancy</h3>
+            <p class="muted">Roadmaps tied to OKRs, build vs. buy, and pragmatic tech choices.</p>
+          </div>
+        </article>
+        <article class="card feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h12M4 18h8"/></svg>
+          <div>
+            <h3>Scalable architecture</h3>
+            <p class="muted">Cloud‑native patterns for performance, cost efficiency, and resilience.</p>
+          </div>
+        </article>
+        <article class="card feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18M6 12h12M9 17h6"/></svg>
+          <div>
+            <h3>Agile & DevOps</h3>
+            <p class="muted">Short feedback loops with CI/CD, test automation, and observability.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK / CASE STUDIES -->
+  <section id="work">
+    <div class="container">
+      <h2 style="text-align:center">Selected work</h2>
+      <p class="muted" style="text-align:center;max-width:70ch;margin:6px auto 22px">Representative engagements across industries. Client names omitted; details available on request.</p>
+      <div class="grid grid-3">
+        <article class="card">
+          <h3>Global Investment Research Platform</h3>
+          <p class="muted">Research & notes authoring, publish to platform or email, CRM for institutions & contacts, activity analytics and P&L reporting.</p>
+          <div class="stack" style="margin-top:8px">
+            <span class="pill">.NET</span><span class="pill">Azure</span><span class="pill">PostgreSQL</span><span class="pill">AKS</span>
+          </div>
+        </article>
+        <article class="card">
+          <h3>OEM Dealer Scraper for CRM</h3>
+          <p class="muted">For car dealerships: automated ingestion of inventory from OEM portals into the CRM; scheduled scraping, deduplication, and alerting.</p>
+          <div class="stack" style="margin-top:8px">
+            <span class="pill">C#</span><span class="pill">HTML Agility Pack</span><span class="pill">Selenium</span><span class="pill">SQL Server</span>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Email‑Driven Stock Trading</h3>
+          <p class="muted">Parse trade instructions via Microsoft Graph, persist orders, trigger workflows, and notify stakeholders with audit trails.</p>
+          <div class="stack" style="margin-top:8px">
+            <span class="pill">MS Graph</span><span class="pill">.NET</span><span class="pill">Azure</span><span class="pill">Queue/Workers</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- STACK (kept lower, not in hero) -->
+  <section id="stack">
+    <div class="container">
+      <h2 style="text-align:center">Our stack</h2>
+      <div class="card" style="margin-top:16px">
+        <div class="stack">
+          <span class="pill">.NET 8/9</span>
+          <span class="pill">C#</span>
+          <span class="pill">Azure</span>
+          <span class="pill">AKS / Kubernetes</span>
+          <span class="pill">OpenAI</span>
+          <span class="pill">PostgreSQL</span>
+          <span class="pill">Angular / React</span>
+          <span class="pill">Terraform / Bicep</span>
+          <span class="pill">CI/CD</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <h2 style="text-align:center">FAQ</h2>
+      <details>
+        <summary>Do you sell a product?</summary>
+        <p>No. We provide services—dedicated teams and custom solutions. If a product emerges from an engagement, it’s bespoke to that client.</p>
+      </details>
+      <details>
+        <summary>What’s your engagement model?</summary>
+        <p>Flexible: team augmentation, fixed‑scope builds, or long‑term retainer for roadmap ownership and support.</p>
+      </details>
+      <details>
+        <summary>Where do you operate?</summary>
+        <p>Headquartered in Sri Lanka with clients across Asia and Europe. Remote‑first, security‑minded delivery.</p>
+      </details>
+      <details>
+        <summary>Do you provide post-launch support?</summary>
+        <p>Yes. We offer ongoing maintenance, monitoring, incident response, and roadmap delivery. Engagements can be SLA-backed retainers or time-and-materials, depending on your needs.</p>
+      </details>
+      <details>
+        <summary>How quickly can we start?</summary>
+        <p>Discovery can start in 1–2 weeks. Team augmentation typically starts within 2–4+ weeks based on skill fit and availability. If you need a dedicated team or specific senior profiles we don’t have free immediately, we’ll align timelines (often 4–8 weeks, including any hiring/ramp-up) and keep you updated transparently.</p>
+      </details>
+      <details>
+        <summary>Can you join our in-house team remotely?</summary>
+        <p>Absolutely. We embed into your workflows (Slack/Teams, standups, shared boards), align to your sprint cadence, and ensure strong timezone overlap across UK/EU/Asia.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container grid grid-2">
+      <div>
+        <h2>Let’s talk</h2>
+        <p class="muted">Tell us about your goals and constraints. We’ll propose a pragmatic path to value—no fluff.</p>
+        <div class="stack" style="margin-top:10px">
+          <a class="btn primary" href="mailto:hello@navilabs.com?subject=Inquiry%20from%20website">Email us</a>
+        </div>
+      </div>
+      <form class="card" onsubmit="event.preventDefault(); copyEmail();">
+        <label for="email" class="muted">Prefer copy & paste?</label>
+        <div class="row">
+          <input id="email" value="hello@navilabs.com" aria-label="Email" />
+          <button class="btn" type="submit">Copy</button>
+        </div>
+        <small id="copied" class="muted" aria-live="polite" style="display:none">Copied!</small>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container" style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
+    <div>© <span id="year"></span> NaviLabs</div>
+    <div><a class="muted" href="#top">Back to top ↑</a></div>
+  </div>
+</footer>
+
+<script>
+  // Theme toggle with persistence
+  (function(){
+    const root = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+    if(saved === 'light' || (!saved && prefersLight)) root.classList.add('light');
+    document.getElementById('themeToggle')?.addEventListener('click',()=>{
+      root.classList.toggle('light');
+      localStorage.setItem('theme', root.classList.contains('light') ? 'light' : 'dark');
+    });
+  })();
+
+  // Utility: copy email
+  function copyEmail(){
+    const el = document.getElementById('email');
+    if(!el) return;
+    el.select(); el.setSelectionRange(0, 99999);
+    document.execCommand('copy');
+    const badge = document.getElementById('copied');
+    if(badge){ badge.style.display='inline'; setTimeout(()=>badge.style.display='none',1200); }
+  }
+
+  // Dynamic year
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
