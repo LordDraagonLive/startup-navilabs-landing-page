@@ -22,7 +22,7 @@
         }
 
         :root.light {
-            --bg: #ffffff;
+            --bg: #fff;
             --fg: #0b1220;
             --muted: #475569;
             --brand: #5b34ff;
@@ -106,20 +106,46 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 12px 0
+            padding: 12px 0;
+            flex-wrap: wrap
         }
 
         .brand {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             font-weight: 800;
             letter-spacing: .2px
         }
 
         .brand svg {
-            width: 28px;
-            height: 28px
+            width: 32px;
+            height: 32px;
+            flex: 0 0 32px
+        }
+
+        .brand .wordmark {
+            font-weight: 800;
+            font-size: 20px;
+            letter-spacing: .2px;
+            line-height: 1;
+            transform: translateY(1px);
+            font-optical-sizing: auto
+        }
+
+        @media (max-width: 480px) {
+            .brand svg {
+                width: 28px;
+                height: 28px
+            }
+
+            .brand .wordmark {
+                font-size: 19px
+            }
+        }
+
+        .brand, .brand:link, .brand:visited, .brand:hover, .brand:focus, .brand:active {
+            text-decoration: none
         }
 
         .links a {
@@ -166,7 +192,7 @@
             background: var(--brand);
             border-color: transparent;
             color: #fff;
-            padding: 10px 16px; /* adjusted padding for better fit */
+            padding: 10px 16px
         }
 
         .btn.ghost {
@@ -220,26 +246,15 @@
 
         .feature {
             display: flex;
-            gap: 12px
-        }
-
-        .feature svg {
-            flex: 0 0 28px;
-            margin-top: 2px
-        }
-
-        .muted {
-            color: var(--muted)
-        }
-
-        /* Normalize icon/text alignment across sections */
-        .feature {
+            gap: 12px;
             align-items: flex-start
         }
 
         .feature svg {
             width: 28px;
-            height: 28px
+            height: 28px;
+            flex: 0 0 28px;
+            margin-top: 2px
         }
 
         .feature > div {
@@ -319,7 +334,6 @@
         }
 
         /* ===== Responsive tweaks ===== */
-        /* Hero layout: stack content then features card */
         .hero .grid {
             grid-template-columns:1fr;
             align-items: start
@@ -335,25 +349,18 @@
             margin: 32px auto 0
         }
 
-        /* Prevent two‑column layout at large sizes */
         @media (min-width: 1100px) {
             .hero .grid {
                 grid-template-columns:1fr
             }
         }
 
-        /* Section spacing & container padding scale */
         section {
             padding: clamp(56px, 8vw, 80px) 0
         }
 
         .container {
             padding: 0 clamp(14px, 3vw, 20px)
-        }
-
-        /* Nav wrapping for small screens */
-        .nav-inner {
-            flex-wrap: wrap
         }
 
         .links {
@@ -374,7 +381,6 @@
             }
         }
 
-        /* Stack section centering & tighter pills */
         #stack .card {
             padding: 14px 16px
         }
@@ -387,7 +393,6 @@
             margin: 4px 0
         }
 
-        /* FAQ width and center; keep glossy style */
         #faq details {
             max-width: 900px;
             margin: 12px auto
@@ -397,7 +402,6 @@
             margin-bottom: 16px
         }
 
-        /* Contact layout balance */
         #contact .container {
             max-width: 1120px
         }
@@ -413,7 +417,6 @@
             }
         }
 
-        /* Reduce gap between FAQ → Contact */
         #faq {
             padding-bottom: 48px
         }
@@ -422,7 +425,6 @@
             padding-top: 56px
         }
 
-        /* Card + form alignment */
         #contact form.card {
             display: flex;
             flex-direction: column;
@@ -445,7 +447,6 @@
             align-self: flex-start
         }
 
-        /* Tidy headline rhythm */
         #contact h2 {
             margin: 0 0 8px
         }
@@ -455,39 +456,117 @@
             max-width: 48ch
         }
 
-        /* Brand lockup tune */
-        .brand {
-            gap: 12px
+        /* ===== Mobile-friendly navbar ===== */
+        .desktop-nav, .desktop-cta {
+            display: flex
         }
 
-        .brand svg {
-            width: 32px;
-            height: 32px;
-            flex: 0 0 32px
+        .hamburger {
+            display: none
         }
 
-        .brand .wordmark {
-            font-weight: 800;
-            font-size: 20px;
-            letter-spacing: .2px;
-            line-height: 1;
-            transform: translateY(1px);
-            font-optical-sizing: auto
-        }
-
-        @media (max-width: 480px) {
-            .brand svg {
-                width: 28px;
-                height: 28px
+        @media (max-width: 900px) {
+            .desktop-nav, .desktop-cta {
+                display: none
             }
 
-            .brand .wordmark {
-                font-size: 19px
+            .hamburger {
+                display: inline-flex
+            }
+
+            .mobile-menu {
+                gap: 10px;
+                padding: 12px 16px 16px;
+                border-top: 1px solid var(--border);
+                background: rgba(11, 12, 15, .9);
+                backdrop-filter: saturate(180%) blur(10px);
+                animation: menuSlide .18s ease-out
+            }
+
+            :root.light .mobile-menu {
+                background: rgba(255, 255, 255, .96)
+            }
+
+            .mobile-menu a {
+                text-decoration: none;
+                font-weight: 600;
+                color: var(--fg);
+                padding: 10px 8px;
+                border-radius: 10px
+            }
+
+            .mobile-menu a:hover {
+                background: rgba(255, 255, 255, .06)
+            }
+
+            :root.light .mobile-menu a:hover {
+                background: rgba(2, 6, 23, .06)
+            }
+
+            .mobile-cta {
+                width: 100%;
+                justify-content: center;
+                padding: 12px 16px;
+                font-size: 16px;
+                border-radius: 12px
             }
         }
 
-        .brand, .brand:link, .brand:visited, .brand:hover, .brand:focus, .brand:active {
-            text-decoration: none
+        @keyframes menuSlide {
+            from {
+                opacity: 0;
+                transform: translateY(-6px)
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .hamburger-box {
+            display: inline-flex;
+            flex-direction: column;
+            gap: 4px
+        }
+
+        .hamburger-line {
+            width: 18px;
+            height: 2px;
+            background: currentColor;
+            border-radius: 2px;
+            transition: transform .15s ease, opacity .15s ease
+        }
+
+        .hamburger[aria-expanded="true"] .hamburger-line:nth-child(1) {
+            transform: translateY(6px) rotate(45deg)
+        }
+
+        .hamburger[aria-expanded="true"] .hamburger-line:nth-child(2) {
+            opacity: 0
+        }
+
+        .hamburger[aria-expanded="true"] .hamburger-line:nth-child(3) {
+            transform: translateY(-6px) rotate(-45deg)
+        }
+
+        .nav-inner {
+            align-items: center
+        }
+
+        /* Ensure elements with [hidden] never render (safety) */
+        :where([hidden]) {
+            display: none !important
+        }
+
+        /* Show/hide mobile menu via [hidden] — only on mobile widths */
+        @media (max-width: 900px) {
+            .mobile-menu[hidden] {
+                display: none !important
+            }
+
+            .mobile-menu:not([hidden]) {
+                display: grid
+            }
         }
     </style>
 </head>
@@ -503,13 +582,17 @@
             </svg>
             <span class="wordmark">HelaGen</span>
         </a>
-        <div class="links">
+
+        <!-- Desktop links -->
+        <div class="links desktop-nav" aria-label="Primary">
             <a href="#services">Services</a>
             <a href="#work">Work</a>
             <a href="#stack">Stack</a>
             <a href="#faq">FAQ</a>
             <a href="#contact">Contact</a>
         </div>
+
+        <!-- Right-side actions -->
         <div class="actions">
             <button id="themeToggle" class="btn ghost" aria-label="Toggle theme" title="Toggle theme"
                     style="padding:8px 10px">
@@ -523,11 +606,34 @@
                     <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
                 </svg>
             </button>
-            <a class="btn primary" href="mailto:hello@helagenhq.com
-?subject=Request%20a%20call%20from%20HelaGen
-&body=Hi%20HelaGen%2C%0A%0AName%3A%20%0ACompany%3A%20%0ATimezone%3A%20%0APreferred%20times%20(3)%3A%20%0AGoal%20of%20call%3A%20%0A%0AThanks!">Book
+
+            <!-- Mobile menu toggle -->
+            <button id="menuToggle" class="btn ghost hamburger" aria-label="Open menu" aria-controls="mobileMenu"
+                    aria-expanded="false">
+          <span class="hamburger-box" aria-hidden="true">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </span>
+            </button>
+
+            <!-- Desktop CTA -->
+            <a class="btn primary desktop-cta"
+               href="mailto:hello@helagenhq.com?subject=Request%20a%20call%20from%20HelaGen&body=Hi%20HelaGen%2C%0A%0AName%3A%20%0ACompany%3A%20%0ATimezone%3A%20%0APreferred%20times%20(3)%3A%20%0AGoal%20of%20call%3A%20%0A%0AThanks!">Book
                 a call</a>
         </div>
+    </div>
+
+    <!-- Mobile dropdown (hidden by default) -->
+    <div id="mobileMenu" class="mobile-menu" hidden>
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#stack">Stack</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+        <a class="btn primary mobile-cta"
+           href="mailto:hello@helagenhq.com?subject=Request%20a%20call%20from%20HelaGen&body=Hi%20HelaGen%2C%0A%0AName%3A%20%0ACompany%3A%20%0ATimezone%3A%20%0APreferred%20times%20(3)%3A%20%0AGoal%20of%20call%3A%20%0A%0AThanks!">Book
+            a call</a>
     </div>
 </nav>
 
@@ -604,7 +710,7 @@
         </div>
     </section>
 
-    <!-- CAPABILITIES (matches card format) -->
+    <!-- CAPABILITIES -->
     <section id="capabilities">
         <div class="container">
             <h2 style="text-align:center">How we help</h2>
@@ -640,13 +746,12 @@
         </div>
     </section>
 
-    <!-- WORK / CASE STUDIES -->
+    <!-- WORK -->
     <section id="work">
         <div class="container">
             <h2 style="text-align:center">Our Solutions</h2>
             <p class="muted" style="text-align:center;max-width:70ch;margin:6px auto 22px">Innovative, reliable, and
-                tailored to meet our clients’ evolving needs.
-            </p>
+                tailored to meet our clients’ evolving needs.</p>
             <div class="grid grid-3">
                 <article class="card">
                     <h3>Global Investment Research Platform</h3>
@@ -679,7 +784,7 @@
         </div>
     </section>
 
-    <!-- STACK (kept lower, not in hero) -->
+    <!-- STACK -->
     <section id="stack">
         <div class="container">
             <h2 style="text-align:center">Our stack</h2>
@@ -706,35 +811,29 @@
             <details>
                 <summary>Do you sell a product?</summary>
                 <p>No. We provide services—dedicated teams and custom solutions. If a product emerges from an
-                    engagement, it’s bespoke to that client.</p>
-            </details>
+                    engagement, it’s bespoke to that client.</p></details>
             <details>
                 <summary>What’s your engagement model?</summary>
                 <p>Flexible: team augmentation, fixed‑scope builds, or long‑term retainer for roadmap ownership and
-                    support.</p>
-            </details>
+                    support.</p></details>
             <details>
                 <summary>Where do you operate?</summary>
                 <p>Headquartered in Sri Lanka with clients across Asia and Europe. Remote‑first, security‑minded
-                    delivery.</p>
-            </details>
+                    delivery.</p></details>
             <details>
                 <summary>Do you provide post-launch support?</summary>
                 <p>Yes. We offer ongoing maintenance, monitoring, incident response, and roadmap delivery. Engagements
-                    can be SLA-backed retainers or time-and-materials, depending on your needs.</p>
-            </details>
+                    can be SLA-backed retainers or time-and-materials, depending on your needs.</p></details>
             <details>
                 <summary>How quickly can we start?</summary>
                 <p>Discovery can start in 1–2 weeks. Team augmentation typically starts within 2–4+ weeks based on skill
                     fit and availability. If you need a dedicated team or specific senior profiles we don’t have free
                     immediately, we’ll align timelines (often 4–8 weeks, including any hiring/ramp-up) and keep you
-                    updated transparently.</p>
-            </details>
+                    updated transparently.</p></details>
             <details>
                 <summary>Can you join our in-house team remotely?</summary>
                 <p>Absolutely. We embed into your workflows (Slack/Teams, standups, shared boards), align to your sprint
-                    cadence, and ensure strong timezone overlap across UK/EU/Asia.</p>
-            </details>
+                    cadence, and ensure strong timezone overlap across UK/EU/Asia.</p></details>
         </div>
     </section>
 
@@ -798,6 +897,35 @@
 
     // Dynamic year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle (accessible)
+    (function () {
+        const toggle = document.getElementById('menuToggle');
+        const menu = document.getElementById('mobileMenu');
+        if (!toggle || !menu) return;
+
+        function setOpen(open) {
+            toggle.setAttribute('aria-expanded', String(open));
+            // Use [hidden] attribute so CSS media query controls display
+            menu.hidden = !open;
+        }
+
+        toggle.addEventListener('click', () => {
+            const open = toggle.getAttribute('aria-expanded') !== 'true';
+            setOpen(open);
+        });
+
+        // Close on link click
+        menu.addEventListener('click', (e) => {
+            const t = e.target;
+            if (t instanceof HTMLElement && t.tagName === 'A') setOpen(false);
+        });
+
+        // Close on escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') setOpen(false);
+        });
+    })();
 </script>
 </body>
 </html>
