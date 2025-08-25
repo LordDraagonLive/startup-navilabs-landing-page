@@ -82,8 +82,13 @@
             grid-template-columns:repeat(3, minmax(0, 1fr))
         }
 
+        /* NEW: 4-up grid for Our process */
+        .grid-4 {
+            grid-template-columns:repeat(4, minmax(0, 1fr))
+        }
+
         @media (max-width: 900px) {
-            .grid-2, .grid-3 {
+            .grid-2, .grid-3, .grid-4 {
                 grid-template-columns:1fr
             }
         }
@@ -678,7 +683,7 @@
                             <path d="M4 19l8 4 8-4"/>
                         </svg>
                         <div>
-                            <h3>Dedicated Teams for Businesses</h3>
+                            <h3>Dedicated Teams or Developers</h3>
                             <p class="muted">High‑performing engineers embedded with your product org. Flexible
                                 capacity, senior mentorship, and delivery you can trust.</p>
                             <ul>
@@ -710,36 +715,54 @@
         </div>
     </section>
 
-    <!-- CAPABILITIES -->
+
+    <!-- CAPABILITIES (UPDATED ONLY THIS SECTION) -->
     <section id="capabilities">
         <div class="container">
-            <h2 style="text-align:center">How we help</h2>
-            <div class="grid grid-3" style="margin-top:18px">
+            <h2 style="text-align:center">Our process</h2>
+            <div class="grid grid-4" style="margin-top:18px">
+                <!-- Talk: chat bubble -->
                 <article class="card feature">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M3 12h18M12 3v18"/>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M4 6h12a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H8l-4 3v-3"/>
                     </svg>
                     <div>
-                        <h3>Strategic consultancy</h3>
-                        <p class="muted">Roadmaps tied to OKRs, build vs. buy, and pragmatic tech choices.</p>
+                        <h3>Talk</h3>
+                        <p class="muted">We align on goals, scope, and success metrics. Fast, practical discovery.</p>
                     </div>
                 </article>
+                <!-- Plan: clipboard/checklist -->
                 <article class="card feature">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M4 6h16M4 12h12M4 18h8"/>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <rect x="5" y="4" width="14" height="16" rx="2"/>
+                        <path d="M9 7h6M8 11h8M8 15h8"/>
                     </svg>
                     <div>
-                        <h3>Scalable architecture</h3>
-                        <p class="muted">Cloud‑native patterns for performance, cost efficiency, and resilience.</p>
+                        <h3>Plan</h3>
+                        <p class="muted">Straightforward roadmap, architecture, and resourcing—no fluff.</p>
                     </div>
                 </article>
+                <!-- Build: code brackets -->
                 <article class="card feature">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M3 7h18M6 12h12M9 17h6"/>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M8 5l-5 7 5 7"/>
+                        <path d="M16 5l5 7-5 7"/>
                     </svg>
                     <div>
-                        <h3>Agile & DevOps</h3>
-                        <p class="muted">Short feedback loops with CI/CD, test automation, and observability.</p>
+                        <h3>Build</h3>
+                        <p class="muted">Short iterations, automated testing, and secure cloud delivery.</p>
+                    </div>
+                </article>
+                <!-- Support: lifebuoy -->
+                <article class="card feature">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="12" cy="12" r="9"/>
+                        <circle cx="12" cy="12" r="4"/>
+                        <path d="M12 3v4M21 12h-4M12 21v-4M3 12h4"/>
+                    </svg>
+                    <div>
+                        <h3>Support</h3>
+                        <p class="muted">Post‑launch monitoring, enhancements, and scale. We stay to make it work.</p>
                     </div>
                 </article>
             </div>
