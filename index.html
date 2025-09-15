@@ -7,6 +7,7 @@
     <meta name="description"
           content="HelaGen provides dedicated engineering teams and end‑to‑end software solutions across industries. .NET • Azure • Kubernetes • OpenAI • PostgreSQL."/>
     <link rel="icon" type="image/x-icon" href="helagen_favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         /* ===== Theme ===== */
         :root {
@@ -412,7 +413,7 @@
         }
 
         #contact .grid {
-            align-items: stretch;
+            align-items: start;
             gap: 24px
         }
 
@@ -431,6 +432,7 @@
         }
 
         #contact form.card {
+            align-self: start;
             display: flex;
             flex-direction: column;
             gap: 12px
@@ -459,6 +461,37 @@
         #contact p.muted {
             margin: 0 0 14px;
             max-width: 48ch
+        }
+
+        /* Icon-only social buttons */
+        .socials {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .icon-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: transparent;
+            color: var(--fg);
+            text-decoration: none;
+            transition: transform .1s ease, border-color .2s ease;
+        }
+
+        .icon-btn:hover {
+            transform: translateY(-1px);
+            border-color: var(--fg);
+        }
+
+        .icon-btn svg {
+            width: 18px;
+            height: 18px;
         }
 
         /* ===== Mobile-friendly navbar ===== */
@@ -739,7 +772,7 @@
                     </svg>
                     <div>
                         <h3>Plan</h3>
-                        <p class="muted">Straightforward roadmap, architecture, and resourcing—no fluff.</p>
+                        <p class="muted">Straightforward roadmap, architecture, and resourcing - no fluff.</p>
                     </div>
                 </article>
                 <!-- Build: code brackets -->
@@ -865,11 +898,34 @@
         <div class="container grid grid-2">
             <div>
                 <h2>Let’s talk</h2>
-                <p class="muted">Tell us about your goals and constraints. We’ll propose a pragmatic path to value—no
-                    fluff.</p>
+                <p class="muted">
+                    Tell us about your goals and constraints. We’ll propose a pragmatic path to value - no fluff.
+                    Prefer social? Reach us here:
+                </p>
+
+                <!-- Email CTA -->
                 <div class="stack" style="margin-top:10px">
                     <a class="btn primary" href="mailto:hello@helagenhq.com?subject=Inquiry%20from%20website">Email
                         us</a>
+                </div>
+
+                <!-- Icon-only socials -->
+                <div class="socials" aria-label="Social links">
+                    <!-- LinkedIn -->
+                    <a class="icon-btn" href="https://www.linkedin.com/company/helagen/" target="_blank" rel="noopener"
+                       aria-label="HelaGen on LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <!-- Facebook -->
+                    <a class="icon-btn" href="https://www.facebook.com/helagenhq" target="_blank" rel="noopener"
+                       aria-label="HelaGen on Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <!-- Instagram -->
+                    <a class="icon-btn" href="https://www.instagram.com/helagenhq" target="_blank" rel="noopener"
+                       aria-label="HelaGen on Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
                 </div>
             </div>
             <form class="card" onsubmit="event.preventDefault(); copyEmail();">
@@ -885,11 +941,27 @@
 </main>
 
 <footer>
-    <div class="container" style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
+    <div class="container"
+         style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center">
         <div>© <span id="year"></span> HelaGen</div>
+
+        <!-- Social Links -->
+        <div class="social-links" style="display:flex;gap:14px;align-items:center">
+            <a href="https://www.linkedin.com/company/helagen/" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://www.facebook.com/helagen" target="_blank" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/helagen.hq" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+
         <div><a class="muted" href="#top">Back to top ↑</a></div>
     </div>
 </footer>
+
 
 <script>
     // Theme toggle with persistence
