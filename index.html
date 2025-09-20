@@ -613,7 +613,7 @@
 <nav class="nav">
     <div class="container nav-inner">
         <a class="brand" href="#top" aria-label="Go to top">
-            <img src="helagen_icon_17_09_2025.png" alt="HelaGen logo" width="32" height="32" />
+            <img src="helagen_icon_17_09_2025.png" alt="HelaGen logo" width="32" height="32"/>
             <span class="wordmark">HelaGen</span>
         </a>
 
@@ -802,36 +802,70 @@
     <section id="work">
         <div class="container">
             <h2 style="text-align:center">Our Solutions</h2>
-            <p class="muted" style="text-align:center;max-width:70ch;margin:6px auto 22px">Innovative, reliable, and
-                tailored to meet our clients’ evolving needs.</p>
+            <p class="muted" style="text-align:center;max-width:72ch;margin:6px auto 22px">
+                A few outcomes we’ve shipped. Clear problems, focused builds, measurable impact.
+            </p>
+
             <div class="grid grid-3">
+                <!-- Case 1: Investment Research Platform -->
                 <article class="card">
                     <h3>Global Investment Research Platform</h3>
-                    <p class="muted">Research & notes authoring, publish to platform or email, CRM for institutions &
-                        contacts, activity analytics and P&L reporting.</p>
-                    <div class="stack" style="margin-top:8px">
-                        <span class="pill">.NET</span><span class="pill">Azure</span><span
-                            class="pill">PostgreSQL</span><span class="pill">AKS</span>
+                    <p class="muted">
+                        Authoring &amp; publishing across devices, with engagement analytics and external reporting.
+                    </p>
+                    <ul style="margin:10px 0 0;padding-left:18px">
+                        <li><strong>Challenge:</strong> Research stuck in emails; limited visibility.</li>
+                        <li><strong>Solution:</strong> Morning briefs, research notes, PDFs + secure portal.</li>
+                        <li><strong>Analytics:</strong> Email opens/clicks, portal views, internal usage.</li>
+                        <li><strong>Reporting:</strong> Exports to IHS Markit, Bloomberg, CorpAxe.</li>
+                    </ul>
+                    <p class="muted" style="margin-top:10px"><em>Impact:</em> ~40% faster distribution, 2× more note
+                        views/ investor.</p>
+                    <div class="stack" style="margin-top:10px">
+                        <span class="pill">.NET</span><span class="pill">Azure</span><span class="pill">AKS</span><span
+                            class="pill">PostgreSQL</span>
                     </div>
                 </article>
+
+                <!-- Case 2: OEM Dealer Scraper -->
                 <article class="card">
                     <h3>OEM Dealer Scraper for CRM</h3>
-                    <p class="muted">For car dealerships: automated ingestion of inventory from OEM portals into the
-                        CRM; scheduled scraping, deduplication, and alerting.</p>
-                    <div class="stack" style="margin-top:8px">
-                        <span class="pill">C#</span><span class="pill">HTML Agility Pack</span><span class="pill">Selenium</span><span
+                    <p class="muted">
+                        Automated ingestion of inventory from OEM portals with dedupe, schedules, and alerts.
+                    </p>
+                    <ul style="margin:10px 0 0;padding-left:18px">
+                        <li><strong>Challenge:</strong> Manual copy/paste into CRM; stale data.</li>
+                        <li><strong>Solution:</strong> Headless scraping, normalization, and safe retries.</li>
+                        <li><strong>Ops:</strong> Schedules, alerts, and audit trails for changes.</li>
+                        <li><strong>Result:</strong> Fresh stock daily, fewer errors, faster quoting.</li>
+                    </ul>
+                    <div class="stack" style="margin-top:10px">
+                        <span class="pill">C#</span><span class="pill">Selenium</span><span class="pill">HTML Agility Pack</span><span
                             class="pill">SQL Server</span>
                     </div>
                 </article>
+
+                <!-- Case 3: Email-Driven Trading -->
                 <article class="card">
-                    <h3>Email‑Driven Stock Trading</h3>
-                    <p class="muted">Parse trade instructions via Microsoft Graph, persist orders, trigger workflows,
-                        and notify stakeholders with audit trails.</p>
-                    <div class="stack" style="margin-top:8px">
+                    <h3>Email-Driven Stock Trading</h3>
+                    <p class="muted">
+                        Parse trade instructions, persist orders, trigger workflows, and notify stakeholders.
+                    </p>
+                    <ul style="margin:10px 0 0;padding-left:18px">
+                        <li><strong>Challenge:</strong> Free-form email instructions, manual triage.</li>
+                        <li><strong>Solution:</strong> MS Graph parsing, validations, and approvals.</li>
+                        <li><strong>Controls:</strong> Audit logs, status tracking, exception handling.</li>
+                        <li><strong>Result:</strong> Shorter turnaround, clearer oversight, fewer mistakes.</li>
+                    </ul>
+                    <div class="stack" style="margin-top:10px">
                         <span class="pill">MS Graph</span><span class="pill">.NET</span><span
-                            class="pill">Azure</span><span class="pill">Queue/Workers</span>
+                            class="pill">Azure</span><span class="pill">Queues/Workers</span>
                     </div>
                 </article>
+            </div>
+
+            <div style="text-align:center;margin-top:18px">
+                <a class="btn" href="#contact">See how this could fit your roadmap →</a>
             </div>
         </div>
     </section>
