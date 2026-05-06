@@ -12,3 +12,9 @@ Static landing page for HelaGen's official website.
 ## Local Preview
 
 Open `index.html` directly in a browser. No build step or dev server is required.
+
+## License
+
+This is a proprietary official website for HelaGen. All rights are reserved.
+The public repository does not grant permission to copy, reuse, modify, host, or
+redistribute this website or its assets. See [LICENSE](LICENSE) for details.
