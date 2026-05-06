@@ -7,6 +7,8 @@ Static landing page for HelaGen's official website.
 - `index.html` - page content and semantic structure
 - `assets/css/styles.css` - theme, layout, responsive styles, and components
 - `assets/js/main.js` - theme toggle, mobile navigation, current year, and email copy behavior
+- `robots.txt` - crawler access rules and sitemap reference
+- `sitemap.xml` - canonical URL for search engine discovery
 - `helagen_icon_17_09_2025.png` - favicon and navbar logo
 
 ## Local Preview
