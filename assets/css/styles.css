@@ -71,7 +71,7 @@ a {
 }
 
 .container {
-  max-width: 1120px;
+  max-width: 1180px;
   margin-inline: auto;
   padding: 0 20px;
 }
@@ -123,6 +123,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 24px;
   padding: 12px 0;
   flex-wrap: wrap;
 }
@@ -131,6 +132,7 @@ section {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex: 0 0 auto;
   font-weight: 800;
   letter-spacing: 0.2px;
 }
@@ -171,7 +173,6 @@ section {
 }
 
 .links a {
-  margin-left: 18px;
   text-decoration: none;
   color: var(--muted);
   font-weight: 600;
@@ -189,6 +190,7 @@ section {
   display: flex;
   gap: 10px;
   align-items: center;
+  flex: 0 0 auto;
 }
 
 .btn {
@@ -305,6 +307,18 @@ p.lead {
 .feature ul {
   margin: 8px 0 0;
   padding-left: 18px;
+}
+
+.text-link {
+  display: inline-flex;
+  margin-top: 12px;
+  color: var(--fg);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.text-link:hover {
+  color: var(--accent);
 }
 
 .pill {
@@ -460,11 +474,11 @@ section {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  gap: 10px 22px;
 }
 
 @media (max-width: 720px) {
   .links a {
-    margin: 6px 10px 0 0;
     font-size: 14px;
   }
 
@@ -592,11 +606,15 @@ section {
   display: flex;
 }
 
+.desktop-nav {
+  flex: 1 1 auto;
+}
+
 .hamburger {
   display: none;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1040px) {
   .desktop-nav,
   .desktop-cta {
     display: none;
@@ -693,7 +711,7 @@ section {
 }
 
 /* Show/hide mobile menu via [hidden] — only on mobile widths */
-@media (max-width: 900px) {
+@media (max-width: 1040px) {
   .mobile-menu[hidden] {
     display: none !important;
   }

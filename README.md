@@ -12,6 +12,15 @@ Static landing page for HelaGen's official website.
 - `assets/images/og-preview.png` - social sharing preview image
 - `helagen_icon_17_09_2025.png` - favicon and navbar logo
 
+## SEO Landing Pages
+
+- `enterprise-software-development.html` - enterprise platforms, portals, workflows, and integrations
+- `business-app-development.html` - custom business apps, internal tools, dashboards, and automation
+- `website-development-maintenance.html` - websites, web apps, portals, and ongoing website maintenance
+- `software-maintenance-support.html` - bug fixes, updates, enhancements, and long-term software support
+- `legacy-software-modernization.html` - audits, refactoring, cloud migration, and modernization
+- `dedicated-development-teams.html` - dedicated developers and engineering pods
+
 ## Local Preview
 
 Open `index.html` directly in a browser. No build step or dev server is required.
